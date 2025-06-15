@@ -1,16 +1,9 @@
 
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Menu, X, Shield } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 
-interface HeaderProps {
-  onAdminClick?: () => void;
-}
-
-const Header = ({ onAdminClick }: HeaderProps) => {
+const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navigate = useNavigate();
 
   const navItems = [
     { label: "Trang chủ", href: "#home" },
@@ -19,10 +12,6 @@ const Header = ({ onAdminClick }: HeaderProps) => {
     { label: "Bảng giá", href: "#pricing" },
     { label: "Liên hệ", href: "#contact" }
   ];
-
-  const handleAdminClick = () => {
-    navigate("/admin");
-  };
 
   return (
     <header className="bg-white shadow-lg sticky top-0 z-50">
@@ -49,15 +38,6 @@ const Header = ({ onAdminClick }: HeaderProps) => {
                 {item.label}
               </a>
             ))}
-            <Button
-              onClick={handleAdminClick}
-              variant="outline"
-              size="sm"
-              className="text-xs flex items-center space-x-1"
-            >
-              <Shield className="w-3 h-3" />
-              <span>Quản trị</span>
-            </Button>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -82,18 +62,6 @@ const Header = ({ onAdminClick }: HeaderProps) => {
                 {item.label}
               </a>
             ))}
-            <Button
-              onClick={() => {
-                handleAdminClick();
-                setIsMenuOpen(false);
-              }}
-              variant="outline"
-              size="sm"
-              className="mt-2 flex items-center space-x-1"
-            >
-              <Shield className="w-3 h-3" />
-              <span>Quản trị</span>
-            </Button>
           </nav>
         )}
       </div>
