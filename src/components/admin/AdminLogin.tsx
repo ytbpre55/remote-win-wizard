@@ -16,8 +16,8 @@ const AdminLogin = ({ onClose, onLogin }: AdminLoginProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
-  // Mật khẩu mặc định - trong thực tế nên lưu trong database hoặc env
-  const ADMIN_PASSWORD = "admin123";
+  // Mật khẩu admin mới
+  const ADMIN_PASSWORD = "Beautifull123!";
 
   const handleLogin = () => {
     setIsLoading(true);

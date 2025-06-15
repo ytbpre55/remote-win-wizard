@@ -15,14 +15,14 @@ const Hero = () => {
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6 leading-tight">
+            <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6 leading-tight">
               Dịch Vụ Cài Win Online 
-              <span className="text-blue-600"> Từ Xa</span>
-            </h2>
-            <p className="text-xl text-gray-600 mb-8">
-              Giải pháp cài đặt Windows chuyên nghiệp, nhanh chóng và tiện lợi 
+              <span className="text-blue-600"> Từ Xa Chuyên Nghiệp</span>
+            </h1>
+            <h2 className="text-xl text-gray-600 mb-8">
+              Giải pháp cài đặt Windows 7, 10, 11 từ xa nhanh chóng và tiện lợi 
               ngay tại nhà bạn. Đội ngũ kỹ thuật viên giàu kinh nghiệm sẵn sàng hỗ trợ 24/7.
-            </p>
+            </h2>
 
             <div className="grid md:grid-cols-2 gap-4 mb-8">
               {features.map((feature, index) => (
