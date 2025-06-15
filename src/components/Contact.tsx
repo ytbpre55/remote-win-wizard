@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -33,13 +34,40 @@ const Contact = () => {
         publicKey: publicKey.substring(0, 5) + '...' // Only show first 5 chars for security
       });
 
+      // Tạo nội dung email có cấu trúc rõ ràng
+      const serviceLabels = {
+        "1-may": "Cài win cho 1 máy",
+        "2-may": "Cài win cho 2 máy", 
+        "3-4-may": "Cài win cho 3-4 máy",
+        "5-may-tro-len": "Cài win cho 5+ máy",
+        "doanh-nghiep": "Gói doanh nghiệp"
+      };
+
+      const selectedService = serviceLabels[formData.service as keyof typeof serviceLabels] || formData.service;
+
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
-        phone: formData.phone,
-        service: formData.service,
-        message: formData.message,
-        to_email: 'ytbpre55@gmail.com'
+        from_phone: formData.phone,
+        selected_service: selectedService,
+        user_message: formData.message,
+        to_email: 'ytbpre55@gmail.com',
+        // Thêm các field riêng biệt để template có thể sử dụng
+        customer_name: formData.name,
+        customer_phone: formData.phone,
+        customer_email: formData.email,
+        service_type: selectedService,
+        // Tạo message có cấu trúc
+        message: `
+THÔNG TIN KHÁCH HÀNG:
+- Họ và tên: ${formData.name}
+- Số điện thoại: ${formData.phone}
+- Email: ${formData.email || 'Không cung cấp'}
+- Dịch vụ quan tâm: ${selectedService || 'Không chọn'}
+
+TIN NHẮN:
+${formData.message || 'Không có tin nhắn'}
+        `.trim()
       };
 
       console.log('Template params:', templateParams);
@@ -284,15 +312,17 @@ const Contact = () => {
 
                 <div className="mt-6 p-4 bg-yellow-50 rounded-lg border border-yellow-200">
                   <h4 className="font-semibold text-yellow-800 mb-2">
-                    ⚠️ Cần kiểm tra cấu hình EmailJS
+                    📧 Thông tin email template
                   </h4>
                   <p className="text-sm text-yellow-700 mb-2">
-                    Nếu gặp lỗi gửi email, vui lòng:
+                    Để hiển thị đầy đủ thông tin trong email, hãy cập nhật template EmailJS với các biến:
                   </p>
                   <ul className="text-sm text-yellow-700 space-y-1">
-                    <li>• Kiểm tra lại Public Key tại <a href="https://dashboard.emailjs.com/admin/account" target="_blank" className="underline">EmailJS Dashboard</a></li>
-                    <li>• Xác nhận Service ID và Template ID đã chính xác</li>
-                    <li>• Đảm bảo template đã được tạo và kích hoạt</li>
+                    <li>• <code>{'{{customer_name}}'}</code> - Họ và tên</li>
+                    <li>• <code>{'{{customer_phone}}'}</code> - Số điện thoại</li>
+                    <li>• <code>{'{{customer_email}}'}</code> - Email</li>
+                    <li>• <code>{'{{service_type}}'}</code> - Dịch vụ quan tâm</li>
+                    <li>• <code>{'{{user_message}}'}</code> - Tin nhắn riêng</li>
                   </ul>
                 </div>
 
