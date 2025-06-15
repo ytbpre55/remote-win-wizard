@@ -23,10 +23,9 @@ const Contact = () => {
     setIsLoading(true);
 
     try {
-      // Cấu hình EmailJS - bạn cần thay thế các giá trị này bằng thông tin từ EmailJS dashboard
-      const serviceId = 'YOUR_SERVICE_ID'; // Thay bằng Service ID của bạn
-      const templateId = 'YOUR_TEMPLATE_ID'; // Thay bằng Template ID của bạn
-      const publicKey = 'YOUR_PUBLIC_KEY'; // Thay bằng Public Key của bạn
+      const serviceId = 'service_xy6c8da';
+      const templateId = 'template_2n2059b';
+      const publicKey = 'vEK9TjtlVgtMP11q8daoz';
 
       const templateParams = {
         from_name: formData.name,
@@ -261,18 +260,13 @@ const Contact = () => {
                   </Button>
                 </form>
 
-                <div className="mt-6 p-4 bg-amber-50 rounded-lg border border-amber-200">
-                  <h4 className="font-semibold text-amber-800 mb-2">
-                    ⚠️ Cần cấu hình EmailJS
+                <div className="mt-6 p-4 bg-green-50 rounded-lg border border-green-200">
+                  <h4 className="font-semibold text-green-800 mb-2">
+                    ✅ Form đã sẵn sàng hoạt động!
                   </h4>
-                  <p className="text-sm text-amber-700 mb-2">
-                    Để form hoạt động, bạn cần cập nhật các thông tin sau trong code:
+                  <p className="text-sm text-green-700 mb-2">
+                    EmailJS đã được cấu hình thành công. Khi khách hàng gửi form, email sẽ được gửi trực tiếp đến chauminhtuit@gmail.com
                   </p>
-                  <ul className="text-xs text-amber-600 space-y-1">
-                    <li>• <strong>SERVICE_ID:</strong> Từ EmailJS Dashboard → Email Services</li>
-                    <li>• <strong>TEMPLATE_ID:</strong> Từ EmailJS Dashboard → Email Templates</li>
-                    <li>• <strong>PUBLIC_KEY:</strong> Từ EmailJS Dashboard → Account → API Keys</li>
-                  </ul>
                 </div>
 
                 <div className="mt-4 p-4 bg-green-50 rounded-lg">
