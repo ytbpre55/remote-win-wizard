@@ -1,6 +1,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Monitor, Download, Settings, CheckCircle } from "lucide-react";
+import { Monitor, Download, Settings, CheckCircle, Phone } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Process = () => {
   const processSteps = [
@@ -126,13 +127,27 @@ const Process = () => {
         {/* Call to Action */}
         <div className="text-center">
           <div className="bg-blue-600 text-white rounded-2xl p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold mb-4">Sẵn Sàng Bắt Đầu?</h3>
+            <h3 className="text-2xl font-bold mb-4">🚀 Đặt Dịch Vụ Nhanh</h3>
             <p className="text-blue-100 mb-6">
-              Liên hệ ngay với chúng tôi để được tư vấn và báo giá chi tiết
+              Gọi ngay để được tư vấn và đặt lịch cài đặt trong ngày
             </p>
-            <div className="space-y-2">
+            <div className="space-y-4">
               <p className="text-xl font-bold">📞 Số điện thoại/Zalo: 0356243926</p>
-              <p className="text-blue-100">Hỗ trợ 24/7 - Phục vụ tận tâm</p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <Button 
+                  className="bg-white text-blue-600 hover:bg-gray-100 font-semibold"
+                  onClick={() => window.open('tel:0356243926')}
+                >
+                  <Phone className="w-4 h-4 mr-2" />
+                  Gọi ngay
+                </Button>
+                <Button 
+                  className="bg-green-500 text-white hover:bg-green-600 font-semibold"
+                  onClick={() => window.open('https://zalo.me/0356243926')}
+                >
+                  Chat Zalo
+                </Button>
+              </div>
             </div>
           </div>
         </div>
