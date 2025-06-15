@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Phone, Mail, Clock, MapPin } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -14,46 +15,54 @@ const Contact = () => {
     service: "",
     message: ""
   });
+  const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Create email content
-    const subject = `Yêu cầu tư vấn dịch vụ cài Win - ${formData.name}`;
-    const body = `
-Họ và tên: ${formData.name}
-Số điện thoại: ${formData.phone}
-Email: ${formData.email}
-Dịch vụ quan tâm: ${formData.service}
+    setIsLoading(true);
 
-Tin nhắn:
-${formData.message}
+    try {
+      // Cấu hình EmailJS - bạn cần thay thế các giá trị này bằng thông tin từ EmailJS dashboard
+      const serviceId = 'YOUR_SERVICE_ID'; // Thay bằng Service ID của bạn
+      const templateId = 'YOUR_TEMPLATE_ID'; // Thay bằng Template ID của bạn
+      const publicKey = 'YOUR_PUBLIC_KEY'; // Thay bằng Public Key của bạn
 
----
-Email này được gửi từ form liên hệ trên website CaiWinOnline.com
-    `.trim();
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        service: formData.service,
+        message: formData.message,
+        to_email: 'chauminhtuit@gmail.com'
+      };
 
-    // Create mailto link
-    const mailtoLink = `mailto:chauminhtuit@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    
-    // Open email client
-    window.location.href = mailtoLink;
-    
-    // Show success message
-    toast({
-      title: "Đang mở ứng dụng email...",
-      description: "Vui lòng gửi email từ ứng dụng email của bạn để hoàn tất yêu cầu.",
-    });
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
 
-    // Reset form
-    setFormData({
-      name: "",
-      phone: "",
-      email: "",
-      service: "",
-      message: ""
-    });
+      toast({
+        title: "Gửi email thành công!",
+        description: "Cảm ơn bạn đã liên hệ. Chúng tôi sẽ phản hồi trong thời gian sớm nhất.",
+      });
+
+      // Reset form after successful submission
+      setFormData({
+        name: "",
+        phone: "",
+        email: "",
+        service: "",
+        message: ""
+      });
+
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      toast({
+        title: "Gửi email thất bại",
+        description: "Có lỗi xảy ra khi gửi email. Vui lòng thử lại hoặc liên hệ trực tiếp qua số điện thoại.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -172,6 +181,7 @@ Email này được gửi từ form liên hệ trên website CaiWinOnline.com
                         placeholder="Nhập họ tên của bạn"
                         required
                         className="w-full"
+                        disabled={isLoading}
                       />
                     </div>
                     <div>
@@ -186,6 +196,7 @@ Email này được gửi từ form liên hệ trên website CaiWinOnline.com
                         placeholder="Nhập số điện thoại"
                         required
                         className="w-full"
+                        disabled={isLoading}
                       />
                     </div>
                   </div>
@@ -202,6 +213,7 @@ Email này được gửi từ form liên hệ trên website CaiWinOnline.com
                         onChange={handleChange}
                         placeholder="Nhập địa chỉ email"
                         className="w-full"
+                        disabled={isLoading}
                       />
                     </div>
                     <div>
@@ -213,6 +225,7 @@ Email này được gửi từ form liên hệ trên website CaiWinOnline.com
                         value={formData.service}
                         onChange={handleChange}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        disabled={isLoading}
                       >
                         <option value="">Chọn dịch vụ</option>
                         <option value="1-may">Cài win cho 1 máy</option>
@@ -235,18 +248,34 @@ Email này được gửi từ form liên hệ trên website CaiWinOnline.com
                       placeholder="Mô tả chi tiết về yêu cầu của bạn..."
                       rows={4}
                       className="w-full"
+                      disabled={isLoading}
                     />
                   </div>
 
                   <Button 
                     type="submit"
                     className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3"
+                    disabled={isLoading}
                   >
-                    Gửi Email Tư Vấn
+                    {isLoading ? "Đang gửi..." : "Gửi Email Tư Vấn"}
                   </Button>
                 </form>
 
-                <div className="mt-6 p-4 bg-green-50 rounded-lg">
+                <div className="mt-6 p-4 bg-amber-50 rounded-lg border border-amber-200">
+                  <h4 className="font-semibold text-amber-800 mb-2">
+                    ⚠️ Cần cấu hình EmailJS
+                  </h4>
+                  <p className="text-sm text-amber-700 mb-2">
+                    Để form hoạt động, bạn cần cập nhật các thông tin sau trong code:
+                  </p>
+                  <ul className="text-xs text-amber-600 space-y-1">
+                    <li>• <strong>SERVICE_ID:</strong> Từ EmailJS Dashboard → Email Services</li>
+                    <li>• <strong>TEMPLATE_ID:</strong> Từ EmailJS Dashboard → Email Templates</li>
+                    <li>• <strong>PUBLIC_KEY:</strong> Từ EmailJS Dashboard → Account → API Keys</li>
+                  </ul>
+                </div>
+
+                <div className="mt-4 p-4 bg-green-50 rounded-lg">
                   <h4 className="font-semibold text-green-800 mb-2">
                     ✅ Cam kết chất lượng dịch vụ
                   </h4>
