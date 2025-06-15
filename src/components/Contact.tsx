@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -28,6 +27,12 @@ const Contact = () => {
       const templateId = 'template_2n2059b';
       const publicKey = 'vEK9TjtlVgtMP11q8daoz';
 
+      console.log('Sending email with config:', {
+        serviceId,
+        templateId,
+        publicKey: publicKey.substring(0, 5) + '...' // Only show first 5 chars for security
+      });
+
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
@@ -37,7 +42,11 @@ const Contact = () => {
         to_email: 'ytbpre55@gmail.com'
       };
 
-      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      console.log('Template params:', templateParams);
+
+      const response = await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      
+      console.log('Email sent successfully:', response);
 
       toast({
         title: "Gửi email thành công!",
@@ -54,10 +63,22 @@ const Contact = () => {
       });
 
     } catch (error) {
-      console.error('EmailJS Error:', error);
+      console.error('EmailJS Error Details:', error);
+      
+      let errorMessage = "Có lỗi xảy ra khi gửi email. Vui lòng thử lại hoặc liên hệ trực tiếp qua số điện thoại.";
+      
+      if (error && typeof error === 'object' && 'text' in error) {
+        const errorText = (error as any).text;
+        if (errorText.includes('Public Key is invalid')) {
+          errorMessage = "Cấu hình EmailJS chưa đúng. Vui lòng kiểm tra lại Public Key trong dashboard EmailJS.";
+        } else if (errorText.includes('service') || errorText.includes('template')) {
+          errorMessage = "Service ID hoặc Template ID không hợp lệ. Vui lòng kiểm tra lại cấu hình EmailJS.";
+        }
+      }
+      
       toast({
         title: "Gửi email thất bại",
-        description: "Có lỗi xảy ra khi gửi email. Vui lòng thử lại hoặc liên hệ trực tiếp qua số điện thoại.",
+        description: errorMessage,
         variant: "destructive"
       });
     } finally {
@@ -261,13 +282,18 @@ const Contact = () => {
                   </Button>
                 </form>
 
-                <div className="mt-6 p-4 bg-green-50 rounded-lg border border-green-200">
-                  <h4 className="font-semibold text-green-800 mb-2">
-                    ✅ Form đã sẵn sàng hoạt động!
+                <div className="mt-6 p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+                  <h4 className="font-semibold text-yellow-800 mb-2">
+                    ⚠️ Cần kiểm tra cấu hình EmailJS
                   </h4>
-                  <p className="text-sm text-green-700 mb-2">
-                    EmailJS đã được cấu hình thành công. Khi khách hàng gửi form, email sẽ được gửi trực tiếp đến ytbpre55@gmail.com
+                  <p className="text-sm text-yellow-700 mb-2">
+                    Nếu gặp lỗi gửi email, vui lòng:
                   </p>
+                  <ul className="text-sm text-yellow-700 space-y-1">
+                    <li>• Kiểm tra lại Public Key tại <a href="https://dashboard.emailjs.com/admin/account" target="_blank" className="underline">EmailJS Dashboard</a></li>
+                    <li>• Xác nhận Service ID và Template ID đã chính xác</li>
+                    <li>• Đảm bảo template đã được tạo và kích hoạt</li>
+                  </ul>
                 </div>
 
                 <div className="mt-4 p-4 bg-green-50 rounded-lg">
