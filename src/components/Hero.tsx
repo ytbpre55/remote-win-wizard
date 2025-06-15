@@ -59,15 +59,6 @@ const Hero = () => {
           </div>
 
           <div className="lg:text-center">
-            {/* Hero Image */}
-            <div className="mb-8">
-              <img 
-                src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80"
-                alt="Dịch vụ cài đặt Windows từ xa"
-                className="w-full h-64 object-cover rounded-2xl shadow-2xl"
-              />
-            </div>
-
             <div className="bg-white rounded-2xl shadow-2xl p-8">
               <div className="text-center mb-6">
                 <div className="bg-blue-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
