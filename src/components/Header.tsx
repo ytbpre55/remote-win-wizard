@@ -2,13 +2,15 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Shield } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface HeaderProps {
-  onAdminClick: () => void;
+  onAdminClick?: () => void;
 }
 
 const Header = ({ onAdminClick }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const navItems = [
     { label: "Trang chủ", href: "#home" },
@@ -17,6 +19,10 @@ const Header = ({ onAdminClick }: HeaderProps) => {
     { label: "Bảng giá", href: "#pricing" },
     { label: "Liên hệ", href: "#contact" }
   ];
+
+  const handleAdminClick = () => {
+    navigate("/admin");
+  };
 
   return (
     <header className="bg-white shadow-lg sticky top-0 z-50">
@@ -44,7 +50,7 @@ const Header = ({ onAdminClick }: HeaderProps) => {
               </a>
             ))}
             <Button
-              onClick={onAdminClick}
+              onClick={handleAdminClick}
               variant="outline"
               size="sm"
               className="text-xs flex items-center space-x-1"
@@ -78,7 +84,7 @@ const Header = ({ onAdminClick }: HeaderProps) => {
             ))}
             <Button
               onClick={() => {
-                onAdminClick();
+                handleAdminClick();
                 setIsMenuOpen(false);
               }}
               variant="outline"
