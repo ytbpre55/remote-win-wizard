@@ -1,4 +1,3 @@
-
 import { Helmet } from "react-helmet";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
@@ -47,8 +46,8 @@ const Index = () => {
         <link rel="canonical" href="https://caiwinonline.com" />
         
         {/* Alternative Language */}
-        <link rel="alternate" hreflang="vi" href="https://caiwinonline.com" />
-        <link rel="alternate" hreflang="x-default" href="https://caiwinonline.com" />
+        <link rel="alternate" hrefLang="vi" href="https://caiwinonline.com" />
+        <link rel="alternate" hrefLang="x-default" href="https://caiwinonline.com" />
         
         {/* Structured Data - Organization */}
         <script type="application/ld+json">
