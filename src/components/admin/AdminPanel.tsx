@@ -4,16 +4,32 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { X, Settings, FileText, DollarSign, Image, BarChart } from "lucide-react";
+import { X, Settings, FileText, DollarSign, Image, BarChart, Plus, Edit, Trash2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 interface AdminPanelProps {
   onClose: () => void;
 }
 
+interface PricingItem {
+  id: number;
+  service: string;
+  price: number;
+  quantity: string;
+}
+
 const AdminPanel = ({ onClose }: AdminPanelProps) => {
   const [activeTab, setActiveTab] = useState("general");
   const { toast } = useToast();
+  const [editingId, setEditingId] = useState<number | null>(null);
 
   const [siteSettings, setSiteSettings] = useState({
     siteName: "CaiWinOnline.com",
@@ -27,16 +43,31 @@ const AdminPanel = ({ onClose }: AdminPanelProps) => {
     metaTitle: "Cài Win Online - Dịch Vụ Cài Đặt Windows Từ Xa Chuyên Nghiệp",
     metaDescription: "Dịch vụ cài win online từ xa chuyên nghiệp. Cài Windows 7, 10, 11 nhanh chóng, tiện lợi. Đội ngũ kỹ thuật 24/7. Giá từ 100k/máy. Liên hệ: 0356243926",
     keywords: "cài win online, cài windows từ xa, dịch vụ cài win, cài win 10, cài win 11",
-    canonicalUrl: "https://caiwinonline.com"
+    canonicalUrl: "https://caiwinonline.com",
+    googleAnalyticsId: "",
+    googleConsoleCode: "",
+    facebookPixelId: ""
   });
 
-  const [pricingData, setPricingData] = useState([
+  const [pricingData, setPricingData] = useState<PricingItem[]>([
     { id: 1, service: "Cài Windows cho 1 máy", price: 150000, quantity: "1 máy" },
     { id: 2, service: "Cài Windows cho 2 máy", price: 140000, quantity: "2 máy" },
     { id: 3, service: "Cài Windows từ 3-4 máy", price: 130000, quantity: "3-4 máy" },
     { id: 4, service: "Cài Windows từ 5+ máy", price: 120000, quantity: "5+ máy" },
     { id: 5, service: "Cài Windows 10+ máy", price: 100000, quantity: "10+ máy" }
   ]);
+
+  const [newPricing, setNewPricing] = useState<Omit<PricingItem, 'id'>>({
+    service: "",
+    price: 0,
+    quantity: ""
+  });
+
+  const [contentSettings, setContentSettings] = useState({
+    heroTitle: "Dịch Vụ Cài Win Online Từ Xa",
+    heroDescription: "Giải pháp cài đặt Windows chuyên nghiệp, nhanh chóng và tiện lợi ngay tại nhà bạn.",
+    serviceIntro: "Chúng tôi cung cấp dịch vụ cài đặt Windows từ xa chuyên nghiệp với đội ngũ kỹ thuật viên giàu kinh nghiệm."
+  });
 
   const adminTabs = [
     { id: "general", label: "Cài đặt chung", icon: Settings },
@@ -53,12 +84,44 @@ const AdminPanel = ({ onClose }: AdminPanelProps) => {
     });
   };
 
-  const handlePricingUpdate = (id: number, field: string, value: string | number) => {
+  const handlePricingUpdate = (id: number, field: keyof PricingItem, value: string | number) => {
     setPricingData(prev => 
       prev.map(item => 
         item.id === id ? { ...item, [field]: field === 'price' ? Number(value) : value } : item
       )
     );
+  };
+
+  const handleAddPricing = () => {
+    if (!newPricing.service || !newPricing.quantity || newPricing.price <= 0) {
+      toast({
+        title: "Lỗi!",
+        description: "Vui lòng điền đầy đủ thông tin.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    const newId = Math.max(...pricingData.map(p => p.id), 0) + 1;
+    setPricingData(prev => [...prev, { ...newPricing, id: newId }]);
+    setNewPricing({ service: "", price: 0, quantity: "" });
+    
+    toast({
+      title: "Thêm thành công!",
+      description: "Đã thêm dịch vụ mới vào bảng giá.",
+    });
+  };
+
+  const handleDeletePricing = (id: number) => {
+    setPricingData(prev => prev.filter(item => item.id !== id));
+    toast({
+      title: "Xóa thành công!",
+      description: "Đã xóa dịch vụ khỏi bảng giá.",
+    });
+  };
+
+  const handleEditPricing = (id: number) => {
+    setEditingId(editingId === id ? null : id);
   };
 
   return (
@@ -192,15 +255,28 @@ const AdminPanel = ({ onClose }: AdminPanelProps) => {
                   <CardContent className="space-y-4">
                     <div>
                       <label className="block text-sm font-medium mb-2">Google Analytics ID</label>
-                      <Input placeholder="G-XXXXXXXXXX" />
+                      <Input 
+                        placeholder="G-XXXXXXXXXX" 
+                        value={seoSettings.googleAnalyticsId}
+                        onChange={(e) => setSeoSettings({...seoSettings, googleAnalyticsId: e.target.value})}
+                      />
                     </div>
                     <div>
                       <label className="block text-sm font-medium mb-2">Google Search Console</label>
-                      <Input placeholder="Mã xác minh Search Console" />
+                      <Input 
+                        placeholder="Mã xác minh Search Console" 
+                        value={seoSettings.googleConsoleCode}
+                        onChange={(e) => setSeoSettings({...seoSettings, googleConsoleCode: e.target.value})}
+                      />
+                      <p className="text-xs text-gray-500 mt-1">Nhập mã meta tag xác minh từ Google Search Console</p>
                     </div>
                     <div>
                       <label className="block text-sm font-medium mb-2">Facebook Pixel ID</label>
-                      <Input placeholder="Facebook Pixel ID" />
+                      <Input 
+                        placeholder="Facebook Pixel ID" 
+                        value={seoSettings.facebookPixelId}
+                        onChange={(e) => setSeoSettings({...seoSettings, facebookPixelId: e.target.value})}
+                      />
                     </div>
                     <Button onClick={() => handleSave("Analytics & Tools")}>
                       Lưu cài đặt
@@ -214,50 +290,113 @@ const AdminPanel = ({ onClose }: AdminPanelProps) => {
               <div className="space-y-6">
                 <Card>
                   <CardHeader>
-                    <CardTitle>Quản Lý Bảng Giá</CardTitle>
+                    <CardTitle className="flex items-center justify-between">
+                      Quản Lý Bảng Giá
+                      <Button onClick={handleAddPricing} size="sm">
+                        <Plus className="w-4 h-4 mr-1" />
+                        Thêm dịch vụ
+                      </Button>
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-4">
-                      {pricingData.map((item) => (
-                        <div key={item.id} className="grid md:grid-cols-4 gap-4 p-4 border rounded-lg">
-                          <div>
-                            <label className="block text-sm font-medium mb-1">Dịch vụ</label>
-                            <Input
-                              value={item.service}
-                              onChange={(e) => handlePricingUpdate(item.id, 'service', e.target.value)}
-                            />
-                          </div>
-                          <div>
-                            <label className="block text-sm font-medium mb-1">Giá (VNĐ)</label>
-                            <Input
-                              type="number"
-                              value={item.price}
-                              onChange={(e) => handlePricingUpdate(item.id, 'price', e.target.value)}
-                            />
-                          </div>
-                          <div>
-                            <label className="block text-sm font-medium mb-1">Số lượng</label>
-                            <Input
-                              value={item.quantity}
-                              onChange={(e) => handlePricingUpdate(item.id, 'quantity', e.target.value)}
-                            />
-                          </div>
-                          <div className="flex items-end">
-                            <Button variant="destructive" size="sm">
-                              Xóa
-                            </Button>
-                          </div>
-                        </div>
-                      ))}
-                      
-                      <div className="flex space-x-4">
-                        <Button onClick={() => handleSave("bảng giá")}>
-                          Lưu bảng giá
-                        </Button>
-                        <Button variant="outline">
-                          Thêm dịch vụ mới
+                    {/* Form thêm dịch vụ mới */}
+                    <div className="mb-6 p-4 border rounded-lg bg-gray-50">
+                      <h4 className="font-medium mb-3">Thêm dịch vụ mới</h4>
+                      <div className="grid md:grid-cols-4 gap-4">
+                        <Input
+                          placeholder="Tên dịch vụ"
+                          value={newPricing.service}
+                          onChange={(e) => setNewPricing({...newPricing, service: e.target.value})}
+                        />
+                        <Input
+                          type="number"
+                          placeholder="Giá (VNĐ)"
+                          value={newPricing.price || ""}
+                          onChange={(e) => setNewPricing({...newPricing, price: Number(e.target.value)})}
+                        />
+                        <Input
+                          placeholder="Số lượng"
+                          value={newPricing.quantity}
+                          onChange={(e) => setNewPricing({...newPricing, quantity: e.target.value})}
+                        />
+                        <Button onClick={handleAddPricing}>
+                          <Plus className="w-4 h-4 mr-1" />
+                          Thêm
                         </Button>
                       </div>
+                    </div>
+
+                    {/* Bảng dịch vụ */}
+                    <Table>
+                      <TableHeader>
+                        <TableRow>
+                          <TableHead>Dịch vụ</TableHead>
+                          <TableHead>Giá (VNĐ)</TableHead>
+                          <TableHead>Số lượng</TableHead>
+                          <TableHead>Thao tác</TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {pricingData.map((item) => (
+                          <TableRow key={item.id}>
+                            <TableCell>
+                              {editingId === item.id ? (
+                                <Input
+                                  value={item.service}
+                                  onChange={(e) => handlePricingUpdate(item.id, 'service', e.target.value)}
+                                />
+                              ) : (
+                                item.service
+                              )}
+                            </TableCell>
+                            <TableCell>
+                              {editingId === item.id ? (
+                                <Input
+                                  type="number"
+                                  value={item.price}
+                                  onChange={(e) => handlePricingUpdate(item.id, 'price', e.target.value)}
+                                />
+                              ) : (
+                                item.price.toLocaleString('vi-VN')
+                              )}
+                            </TableCell>
+                            <TableCell>
+                              {editingId === item.id ? (
+                                <Input
+                                  value={item.quantity}
+                                  onChange={(e) => handlePricingUpdate(item.id, 'quantity', e.target.value)}
+                                />
+                              ) : (
+                                item.quantity
+                              )}
+                            </TableCell>
+                            <TableCell>
+                              <div className="flex space-x-2">
+                                <Button
+                                  variant={editingId === item.id ? "default" : "outline"}
+                                  size="sm"
+                                  onClick={() => handleEditPricing(item.id)}
+                                >
+                                  <Edit className="w-4 h-4" />
+                                </Button>
+                                <Button
+                                  variant="destructive"
+                                  size="sm"
+                                  onClick={() => handleDeletePricing(item.id)}
+                                >
+                                  <Trash2 className="w-4 h-4" />
+                                </Button>
+                              </div>
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                    
+                    <div className="mt-4">
+                      <Button onClick={() => handleSave("bảng giá")}>
+                        Lưu bảng giá
+                      </Button>
                     </div>
                   </CardContent>
                 </Card>
@@ -273,19 +412,24 @@ const AdminPanel = ({ onClose }: AdminPanelProps) => {
                   <CardContent className="space-y-4">
                     <div>
                       <label className="block text-sm font-medium mb-2">Tiêu đề Hero Section</label>
-                      <Input defaultValue="Dịch Vụ Cài Win Online Từ Xa" />
+                      <Input 
+                        value={contentSettings.heroTitle}
+                        onChange={(e) => setContentSettings({...contentSettings, heroTitle: e.target.value})}
+                      />
                     </div>
                     <div>
                       <label className="block text-sm font-medium mb-2">Mô tả Hero Section</label>
                       <Textarea 
-                        defaultValue="Giải pháp cài đặt Windows chuyên nghiệp, nhanh chóng và tiện lợi ngay tại nhà bạn."
+                        value={contentSettings.heroDescription}
+                        onChange={(e) => setContentSettings({...contentSettings, heroDescription: e.target.value})}
                         rows={3}
                       />
                     </div>
                     <div>
                       <label className="block text-sm font-medium mb-2">Giới thiệu dịch vụ</label>
                       <Textarea 
-                        defaultValue="Chúng tôi cung cấp dịch vụ cài đặt Windows từ xa chuyên nghiệp với đội ngũ kỹ thuật viên giàu kinh nghiệm."
+                        value={contentSettings.serviceIntro}
+                        onChange={(e) => setContentSettings({...contentSettings, serviceIntro: e.target.value})}
                         rows={4}
                       />
                     </div>
