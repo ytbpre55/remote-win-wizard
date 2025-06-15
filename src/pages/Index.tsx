@@ -9,9 +9,25 @@ import Pricing from "@/components/Pricing";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import AdminPanel from "@/components/admin/AdminPanel";
+import AdminLogin from "@/components/admin/AdminLogin";
 
 const Index = () => {
-  const [showAdmin, setShowAdmin] = useState(false);
+  const [showAdminLogin, setShowAdminLogin] = useState(false);
+  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
+
+  const handleAdminClick = () => {
+    setShowAdminLogin(true);
+  };
+
+  const handleAdminLogin = () => {
+    setIsAdminAuthenticated(true);
+    setShowAdminLogin(false);
+  };
+
+  const handleAdminClose = () => {
+    setIsAdminAuthenticated(false);
+    setShowAdminLogin(false);
+  };
 
   return (
     <>
@@ -47,11 +63,18 @@ const Index = () => {
         </script>
       </Helmet>
 
-      {showAdmin ? (
-        <AdminPanel onClose={() => setShowAdmin(false)} />
+      {showAdminLogin && (
+        <AdminLogin 
+          onClose={() => setShowAdminLogin(false)} 
+          onLogin={handleAdminLogin}
+        />
+      )}
+
+      {isAdminAuthenticated ? (
+        <AdminPanel onClose={handleAdminClose} />
       ) : (
         <div className="min-h-screen bg-white">
-          <Header onAdminClick={() => setShowAdmin(true)} />
+          <Header onAdminClick={handleAdminClick} />
           <Hero />
           <Services />
           <Process />

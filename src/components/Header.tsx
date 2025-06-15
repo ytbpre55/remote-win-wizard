@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Shield } from "lucide-react";
 
 interface HeaderProps {
   onAdminClick: () => void;
@@ -47,9 +47,10 @@ const Header = ({ onAdminClick }: HeaderProps) => {
               onClick={onAdminClick}
               variant="outline"
               size="sm"
-              className="text-xs"
+              className="text-xs flex items-center space-x-1"
             >
-              Admin
+              <Shield className="w-3 h-3" />
+              <span>Quản trị</span>
             </Button>
           </nav>
 
@@ -82,9 +83,10 @@ const Header = ({ onAdminClick }: HeaderProps) => {
               }}
               variant="outline"
               size="sm"
-              className="mt-2"
+              className="mt-2 flex items-center space-x-1"
             >
-              Admin Panel
+              <Shield className="w-3 h-3" />
+              <span>Quản trị</span>
             </Button>
           </nav>
         )}
