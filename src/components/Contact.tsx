@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -20,10 +19,31 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Simulate form submission
+    // Create email content
+    const subject = `Yêu cầu tư vấn dịch vụ cài Win - ${formData.name}`;
+    const body = `
+Họ và tên: ${formData.name}
+Số điện thoại: ${formData.phone}
+Email: ${formData.email}
+Dịch vụ quan tâm: ${formData.service}
+
+Tin nhắn:
+${formData.message}
+
+---
+Email này được gửi từ form liên hệ trên website CaiWinOnline.com
+    `.trim();
+
+    // Create mailto link
+    const mailtoLink = `mailto:chauminhtuit@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+    
+    // Show success message
     toast({
-      title: "Cảm ơn bạn đã liên hệ!",
-      description: "Chúng tôi sẽ liên hệ lại với bạn trong thời gian sớm nhất.",
+      title: "Đang mở ứng dụng email...",
+      description: "Vui lòng gửi email từ ứng dụng email của bạn để hoàn tất yêu cầu.",
     });
 
     // Reset form
@@ -53,8 +73,8 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email",
-      value: "contact@caiwinonline.com",
-      action: () => window.open('mailto:contact@caiwinonline.com')
+      value: "chauminhtuit@gmail.com",
+      action: () => window.open('mailto:chauminhtuit@gmail.com')
     },
     {
       icon: Clock,
@@ -222,7 +242,7 @@ const Contact = () => {
                     type="submit"
                     className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3"
                   >
-                    Gửi Yêu Cầu Tư Vấn
+                    Gửi Email Tư Vấn
                   </Button>
                 </form>
 
