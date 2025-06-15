@@ -38,7 +38,8 @@ const Process = () => {
     {
       title: "Trường hợp 1: Máy tính vẫn hoạt động bình thường",
       description: "Chúng tôi có thể trực tiếp kết nối và thực hiện cài đặt ngay lập tức",
-      requirements: ["Kết nối internet ổn định", "Cài đặt phần mềm kết nối từ xa"]
+      requirements: ["Kết nối internet ổn định", "Cài đặt phần mềm kết nối từ xa"],
+      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
     },
     {
       title: "Trường hợp 2: Máy tính gặp sự cố, không vào được Windows",
@@ -47,7 +48,8 @@ const Process = () => {
         "USB có dung lượng tối thiểu 2-8GB",
         "Máy tính khác có kết nối mạng",
         "Phần mềm UltraView hoặc TeamViewer trên máy phụ"
-      ]
+      ],
+      image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
     }
   ];
 
@@ -92,14 +94,23 @@ const Process = () => {
         </div>
 
         {/* Scenarios */}
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid lg:grid-cols-2 gap-8 mb-16">
           {scenarios.map((scenario, index) => (
-            <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
-              <CardHeader>
-                <CardTitle className="text-xl font-bold text-gray-800 flex items-center">
-                  <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm font-bold">
+            <Card key={index} className="hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+              <div className="relative">
+                <img 
+                  src={scenario.image}
+                  alt={scenario.title}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="absolute top-4 left-4">
+                  <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">
                     {index + 1}
                   </div>
+                </div>
+              </div>
+              <CardHeader>
+                <CardTitle className="text-xl font-bold text-gray-800">
                   {scenario.title}
                 </CardTitle>
               </CardHeader>
@@ -122,7 +133,7 @@ const Process = () => {
         </div>
 
         {/* Call to Action */}
-        <div className="mt-16 text-center">
+        <div className="text-center">
           <div className="bg-blue-600 text-white rounded-2xl p-8 max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold mb-4">Sẵn Sàng Bắt Đầu?</h3>
             <p className="text-blue-100 mb-6">

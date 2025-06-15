@@ -63,6 +63,45 @@ const Services = () => {
           ))}
         </div>
 
+        {/* Service Images Gallery */}
+        <div className="mb-16">
+          <h3 className="text-2xl font-bold text-gray-800 mb-8 text-center">
+            Hình Ảnh Dịch Vụ Cài Đặt Windows
+          </h3>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="relative overflow-hidden rounded-lg shadow-lg">
+              <img 
+                src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                alt="Cài đặt Windows trên laptop"
+                className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                <p className="text-white font-semibold">Cài đặt Windows cho Laptop</p>
+              </div>
+            </div>
+            <div className="relative overflow-hidden rounded-lg shadow-lg">
+              <img 
+                src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80"
+                alt="Lập trình và cài đặt phần mềm"
+                className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                <p className="text-white font-semibold">Cài đặt phần mềm chuyên nghiệp</p>
+              </div>
+            </div>
+            <div className="relative overflow-hidden rounded-lg shadow-lg">
+              <img 
+                src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                alt="Máy tính để bàn cài Windows"
+                className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                <p className="text-white font-semibold">Hỗ trợ máy tính để bàn</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 lg:p-12">
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             <div>
@@ -85,7 +124,11 @@ const Services = () => {
             
             <div className="text-center">
               <div className="bg-white rounded-xl shadow-lg p-6">
-                <div className="text-6xl mb-4">🖥️</div>
+                <img 
+                  src="https://images.unsplash.com/photo-1473091534298-04dcbce3278c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                  alt="Công cụ cài đặt Windows"
+                  className="w-full h-32 object-cover rounded-lg mb-4"
+                />
                 <h4 className="text-xl font-bold text-gray-800 mb-2">
                   Hỗ Trợ Tất Cả Phiên Bản Windows
                 </h4>
