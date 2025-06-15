@@ -25,7 +25,7 @@ const Contact = () => {
     try {
       const serviceId = 'service_xy6c8da';
       const templateId = 'template_2n2059b';
-      const publicKey = 'vEK9TjtlVgtMP11q8daoz';
+      const publicKey = '07pRkSUM6eKCd110Y';
 
       console.log('Sending email with config:', {
         serviceId,
