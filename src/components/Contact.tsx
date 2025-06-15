@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -309,22 +308,6 @@ ${formData.message || 'Không có tin nhắn'}
                     {isLoading ? "Đang gửi..." : "Gửi Email Tư Vấn"}
                   </Button>
                 </form>
-
-                <div className="mt-6 p-4 bg-yellow-50 rounded-lg border border-yellow-200">
-                  <h4 className="font-semibold text-yellow-800 mb-2">
-                    📧 Thông tin email template
-                  </h4>
-                  <p className="text-sm text-yellow-700 mb-2">
-                    Để hiển thị đầy đủ thông tin trong email, hãy cập nhật template EmailJS với các biến:
-                  </p>
-                  <ul className="text-sm text-yellow-700 space-y-1">
-                    <li>• <code>{'{{customer_name}}'}</code> - Họ và tên</li>
-                    <li>• <code>{'{{customer_phone}}'}</code> - Số điện thoại</li>
-                    <li>• <code>{'{{customer_email}}'}</code> - Email</li>
-                    <li>• <code>{'{{service_type}}'}</code> - Dịch vụ quan tâm</li>
-                    <li>• <code>{'{{user_message}}'}</code> - Tin nhắn riêng</li>
-                  </ul>
-                </div>
 
                 <div className="mt-4 p-4 bg-green-50 rounded-lg">
                   <h4 className="font-semibold text-green-800 mb-2">
