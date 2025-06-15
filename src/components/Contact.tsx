@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -33,7 +34,7 @@ const Contact = () => {
         phone: formData.phone,
         service: formData.service,
         message: formData.message,
-        to_email: 'chauminhtuit@gmail.com'
+        to_email: 'ytbpre55@gmail.com'
       };
 
       await emailjs.send(serviceId, templateId, templateParams, publicKey);
@@ -265,7 +266,7 @@ const Contact = () => {
                     ✅ Form đã sẵn sàng hoạt động!
                   </h4>
                   <p className="text-sm text-green-700 mb-2">
-                    EmailJS đã được cấu hình thành công. Khi khách hàng gửi form, email sẽ được gửi trực tiếp đến chauminhtuit@gmail.com
+                    EmailJS đã được cấu hình thành công. Khi khách hàng gửi form, email sẽ được gửi trực tiếp đến ytbpre55@gmail.com
                   </p>
                 </div>
 
