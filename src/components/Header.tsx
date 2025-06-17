@@ -17,10 +17,12 @@ const Header = () => {
     <header className="bg-white shadow-lg sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <div className="bg-blue-600 text-white p-2 rounded-lg">
-              <span className="font-bold text-xl">CWO</span>
-            </div>
+          <div className="flex items-center space-x-3">
+            <img 
+              src="/lovable-uploads/3c44b9cc-66da-4463-a4a5-a67944b1f1dc.png" 
+              alt="CaiWin Online Logo" 
+              className="h-12 w-auto object-contain"
+            />
             <div>
               <h1 className="text-xl font-bold text-gray-800">CaiWinOnline.com</h1>
               <p className="text-sm text-gray-600">Cài Win Từ Xa Chuyên Nghiệp</p>
