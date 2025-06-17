@@ -1,4 +1,3 @@
-
 import { Helmet } from "react-helmet";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
@@ -17,6 +16,17 @@ const Index = () => {
         <meta name="description" content="🔥 Dịch vụ cài Win online từ xa NHANH CHÓNG - TIỆN LỢI tại nhà. Cài Windows 7, 10, 11 chuyên nghiệp. Kỹ thuật viên 24/7. Giá chỉ từ 100k. Gọi ngay: 0356243926" />
         <meta name="keywords" content="cài win online, cài windows từ xa, dịch vụ cài win, cài win 10, cài win 11, cài windows 7, remote windows installation, cài đặt windows từ xa, sửa máy tính online, cài phần mềm từ xa" />
         
+        {/* Google Analytics */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PG3NB5SEGZ"></script>
+        <script>
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-PG3NB5SEGZ');
+          `}
+        </script>
+
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://caiwinonline.com/" />
