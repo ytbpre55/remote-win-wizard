@@ -14,7 +14,7 @@ const Index = () => {
     <>
       <Helmet>
         <title>Cài Win Online Từ Xa - Dịch Vụ Cài Windows 7/10/11 Chuyên Nghiệp | CaiWinOnline.com</title>
-        <meta name="description" content="🔥 Dịch vụ cài Win online từ xa NHANH CHÓNG - TIỆN LỢI tại nhà. Cài Windows 7, 10, 11 chuyên nghiệp. Kỹ thuật viên 24/7. Giá chỉ từ 100k. Gọi ngay: 0356243926" />
+        <meta name="description" content="🔥 Dịch vụ cài Win online từ xa NHANH CHÓNG - TIỆN LỢI tại nhà. Cài Windows 7, 10, 11 chuyên nghiệp. Kỹ thuật viên 24/7. Giá chỉ từ 100k. Gọi ngay: 0854289499" />
         <meta name="keywords" content="cài win online, cài windows từ xa, dịch vụ cài win, cài win 10, cài win 11, cài windows 7, remote windows installation, cài đặt windows từ xa, sửa máy tính online, cài phần mềm từ xa" />
         
         {/* Google Analytics */}
@@ -33,7 +33,7 @@ const Index = () => {
         <meta property="og:url" content="https://caiwinonline.com/" />
         <meta property="og:title" content="Cài Win Online Từ Xa - Dịch Vụ Cài Windows Chuyên Nghiệp" />
         <meta property="og:description" content="Dịch vụ cài Win online từ xa nhanh chóng, tiện lợi tại nhà. Cài Windows 7, 10, 11 chuyên nghiệp. Kỹ thuật viên 24/7. Giá từ 100k." />
-        <meta property="og:image" content="https://caiwinonline.com/lovable-uploads/84b4f432-25ee-4d57-97eb-91ef67a85ecc.png" />
+        <meta property="og:image" content="https://caiwinonline.com/uploads/84b4f432-25ee-4d57-97eb-91ef67a85ecc.png" />
         <meta property="og:site_name" content="CaiWinOnline.com" />
         <meta property="og:locale" content="vi_VN" />
 
@@ -42,7 +42,7 @@ const Index = () => {
         <meta property="twitter:url" content="https://caiwinonline.com/" />
         <meta property="twitter:title" content="Cài Win Online Từ Xa - Dịch Vụ Cài Windows Chuyên Nghiệp" />
         <meta property="twitter:description" content="Dịch vụ cài Win online từ xa nhanh chóng, tiện lợi tại nhà. Cài Windows 7, 10, 11 chuyên nghiệp." />
-        <meta property="twitter:image" content="https://caiwinonline.com/lovable-uploads/84b4f432-25ee-4d57-97eb-91ef67a85ecc.png" />
+        <meta property="twitter:image" content="https://caiwinonline.com/uploads/84b4f432-25ee-4d57-97eb-91ef67a85ecc.png" />
 
         {/* Additional SEO Meta Tags */}
         <meta name="author" content="CaiWinOnline.com" />
@@ -73,7 +73,7 @@ const Index = () => {
             "logo": "https://caiwinonline.com/logo.png",
             "contactPoint": {
               "@type": "ContactPoint",
-              "telephone": "+84356243926",
+              "telephone": "+84854289499",
               "contactType": "Technical Support",
               "areaServed": "VN",
               "availableLanguage": "Vietnamese"
@@ -85,7 +85,7 @@ const Index = () => {
             },
             "sameAs": [
               "https://www.facebook.com/caiwinonline",
-              "https://zalo.me/0356243926"
+              "https://zalo.me/0854289499"
             ]
           })}
         </script>
@@ -100,7 +100,7 @@ const Index = () => {
             "provider": {
               "@type": "Organization",
               "name": "CaiWinOnline.com",
-              "telephone": "+84356243926"
+              "telephone": "+84854289499"
             },
             "areaServed": {
               "@type": "Country",

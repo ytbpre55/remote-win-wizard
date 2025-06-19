@@ -45,16 +45,16 @@ const Hero = () => {
                 size="lg" 
                 variant="outline" 
                 className="border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-3"
-                onClick={() => window.open('tel:0356243926')}
+                onClick={() => window.open('tel:0854289499')}
               >
                 <Phone className="w-4 h-4 mr-2" />
-                0356243926
+                0854289499
               </Button>
             </div>
 
             <div className="mt-8 p-4 bg-white rounded-lg shadow-md">
               <p className="text-sm text-gray-600 mb-2">Liên hệ qua:</p>
-              <p className="font-semibold text-gray-800">📞 Số điện thoại/Zalo: 0356243926</p>
+              <p className="font-semibold text-gray-800">📞 Số điện thoại/Zalo: 0854289499</p>
             </div>
           </div>
 

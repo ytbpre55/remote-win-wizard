@@ -138,7 +138,7 @@ const Pricing = () => {
                       ? 'bg-blue-600 hover:bg-blue-700' 
                       : 'bg-gray-800 hover:bg-gray-900'
                   }`}
-                  onClick={() => window.open('tel:0356243926')}
+                  onClick={() => window.open('tel:0854289499')}
                 >
                   <Phone className="w-4 h-4 mr-2" />
                   Liên hệ ngay
@@ -187,7 +187,7 @@ const Pricing = () => {
                 Giá trên là giá cho việc cài đặt Windows XP, 7, 8, 8.1, 10, 11 qua mạng internet
               </p>
               <p className="text-lg font-semibold">
-                📞 Liên hệ ngay: 0356243926 để được tư vấn và báo giá chi tiết!
+                📞 Liên hệ ngay: 0854289499 để được tư vấn và báo giá chi tiết!
               </p>
             </div>
           </div>

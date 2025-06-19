@@ -52,7 +52,7 @@ const Footer = () => {
               <div className="flex items-center space-x-3">
                 <Phone className="text-blue-400 w-5 h-5" />
                 <div>
-                  <p className="font-semibold">Hotline: 0356243926</p>
+                  <p className="font-semibold">Hotline: 0854289499</p>
                   <p className="text-gray-400 text-sm">Hỗ trợ 24/7</p>
                 </div>
               </div>
@@ -129,7 +129,7 @@ const Footer = () => {
                 Giảm 10% cho khách hàng đặt từ 3 máy trở lên
               </p>
               <p className="text-blue-400 font-semibold text-sm">
-                Gọi ngay: 0356243926
+                Gọi ngay: 0854289499
               </p>
             </div>
           </div>
@@ -162,7 +162,7 @@ const Footer = () => {
             <div className="bg-gray-800 inline-block px-6 py-3 rounded-lg">
               <p className="text-gray-300 text-sm">
                 <span className="text-blue-400 font-semibold">📞 Liên hệ 24/7:</span> 
-                <span className="ml-2 font-semibold">0356243926</span>
+                <span className="ml-2 font-semibold">0854289499</span>
               </p>
               <p className="text-gray-400 text-xs mt-1">
                 Dịch vụ cài win từ xa chuyên nghiệp - Nhanh chóng - Uy tín

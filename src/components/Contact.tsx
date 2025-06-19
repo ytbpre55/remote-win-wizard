@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -124,8 +125,8 @@ ${formData.message || 'Không có tin nhắn'}
     {
       icon: Phone,
       title: "Số điện thoại/Zalo",
-      value: "0356243926",
-      action: () => window.open('tel:0356243926')
+      value: "0854289499",
+      action: () => window.open('tel:0854289499')
     },
     {
       icon: Mail,
@@ -193,10 +194,10 @@ ${formData.message || 'Không có tin nhắn'}
                   </p>
                   <Button 
                     className="w-full bg-blue-600 hover:bg-blue-700"
-                    onClick={() => window.open('tel:0356243926')}
+                    onClick={() => window.open('tel:0854289499')}
                   >
                     <Phone className="w-4 h-4 mr-2" />
-                    Gọi ngay: 0356243926
+                    Gọi ngay: 0854289499
                   </Button>
                 </div>
               </CardContent>

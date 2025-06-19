@@ -10,7 +10,7 @@ const GeneralSettings = () => {
   const [siteSettings, setSiteSettings] = useState({
     siteName: "CaiWinOnline.com",
     tagline: "Cài Win Từ Xa Chuyên Nghiệp",
-    phone: "0356243926",
+    phone: "0854289499",
     email: "contact@caiwinonline.com",
     address: "Toàn quốc"
   });

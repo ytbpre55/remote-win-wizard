@@ -132,18 +132,18 @@ const Process = () => {
               Gọi ngay để được tư vấn và đặt lịch cài đặt trong ngày
             </p>
             <div className="space-y-4">
-              <p className="text-xl font-bold">📞 Số điện thoại/Zalo: 0356243926</p>
+              <p className="text-xl font-bold">📞 Số điện thoại/Zalo: 0854289499</p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Button 
                   className="bg-white text-blue-600 hover:bg-gray-100 font-semibold"
-                  onClick={() => window.open('tel:0356243926')}
+                  onClick={() => window.open('tel:0854289499')}
                 >
                   <Phone className="w-4 h-4 mr-2" />
                   Gọi ngay
                 </Button>
                 <Button 
                   className="bg-green-500 text-white hover:bg-green-600 font-semibold"
-                  onClick={() => window.open('https://zalo.me/0356243926')}
+                  onClick={() => window.open('https://zalo.me/0854289499')}
                 >
                   Chat Zalo
                 </Button>
