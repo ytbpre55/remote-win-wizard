@@ -79,7 +79,7 @@ const Services = () => {
               </div>
               <div className="bg-white rounded-lg p-4 shadow-md">
                 <p className="text-sm text-gray-600 mb-1">Liên hệ ngay:</p>
-                <p className="text-lg font-bold text-blue-600">📞 0356243926</p>
+                <p className="text-lg font-bold text-blue-600">📞 0854289499</p>
               </div>
             </div>
             
