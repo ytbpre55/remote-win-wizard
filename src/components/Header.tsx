@@ -19,7 +19,7 @@ const Header = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <img 
-              src="https://caiwinonline.com/3c44b9cc-66da-4463-a4a5-a67944b1f1dc.png" 
+              src="/lovable-uploads/3c44b9cc-66da-4463-a4a5-a67944b1f1dc.png" 
               alt="CaiWin Online Logo" 
               className="h-12 w-auto object-contain"
             />
