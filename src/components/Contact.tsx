@@ -131,8 +131,8 @@ ${formData.message || 'Không có tin nhắn'}
     {
       icon: Mail,
       title: "Email",
-      value: "chauminhtuit@gmail.com",
-      action: () => window.open('mailto:chauminhtuit@gmail.com')
+      value: "caiwinonline.com@gmail.com",
+      action: () => window.open('mailto:caiwinonline.com@gmail.com')
     },
     {
       icon: Clock,

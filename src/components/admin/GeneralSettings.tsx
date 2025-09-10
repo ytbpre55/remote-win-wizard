@@ -11,7 +11,7 @@ const GeneralSettings = () => {
     siteName: "CaiWinOnline.com",
     tagline: "Cài Win Từ Xa Chuyên Nghiệp",
     phone: "0854289499",
-    email: "contact@caiwinonline.com",
+    email: "caiwinonline.com@gmail.com",
     address: "Toàn quốc"
   });
 
