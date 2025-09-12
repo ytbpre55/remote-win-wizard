@@ -33,7 +33,7 @@ const Index = () => {
         <meta property="og:url" content="https://caiwinonline.com/" />
         <meta property="og:title" content="Cài Win Online Từ Xa - Dịch Vụ Cài Windows Chuyên Nghiệp" />
         <meta property="og:description" content="Dịch vụ cài Win online từ xa nhanh chóng, tiện lợi tại nhà. Cài Windows 7, 10, 11 chuyên nghiệp. Kỹ thuật viên 24/7. Giá từ 100k." />
-        <meta property="og:image" content="/lovable-uploads/84b4f432-25ee-4d57-97eb-91ef67a85ecc.png" />
+        <meta property="og:image" content="/lovable-uploads/9ec2f753-1bdf-422a-88d2-afb6bb0bff3f.png" />
         <meta property="og:site_name" content="CaiWinOnline.com" />
         <meta property="og:locale" content="vi_VN" />
 
@@ -42,7 +42,7 @@ const Index = () => {
         <meta property="twitter:url" content="https://caiwinonline.com/" />
         <meta property="twitter:title" content="Cài Win Online Từ Xa - Dịch Vụ Cài Windows Chuyên Nghiệp" />
         <meta property="twitter:description" content="Dịch vụ cài Win online từ xa nhanh chóng, tiện lợi tại nhà. Cài Windows 7, 10, 11 chuyên nghiệp." />
-        <meta property="twitter:image" content="/lovable-uploads/84b4f432-25ee-4d57-97eb-91ef67a85ecc.png" />
+        <meta property="twitter:image" content="/lovable-uploads/9ec2f753-1bdf-422a-88d2-afb6bb0bff3f.png" />
 
         {/* Additional SEO Meta Tags */}
         <meta name="author" content="CaiWinOnline.com" />
@@ -70,7 +70,7 @@ const Index = () => {
             "name": "CaiWinOnline.com",
             "alternateName": "Cài Win Online",
             "url": "https://caiwinonline.com",
-            "logo": "/lovable-uploads/3c44b9cc-66da-4463-a4a5-a67944b1f1dc.png",
+            "logo": "/lovable-uploads/9ec2f753-1bdf-422a-88d2-afb6bb0bff3f.png",
             "contactPoint": {
               "@type": "ContactPoint",
               "telephone": "+84854289499",
