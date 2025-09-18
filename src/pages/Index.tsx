@@ -8,6 +8,7 @@ import Reviews from "@/components/Reviews";
 import Pricing from "@/components/Pricing";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import StickyCallButton from "@/components/StickyCallButton";
 
 const Index = () => {
   return (
@@ -179,6 +180,7 @@ const Index = () => {
         <Pricing />
         <Contact />
         <Footer />
+        <StickyCallButton />
       </div>
     </>
   );

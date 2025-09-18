@@ -19,22 +19,10 @@ const Hero = () => {
               Dịch Vụ Cài Win Online 
               <span className="text-blue-600"> Từ Xa Chuyên Nghiệp</span>
             </h1>
-            <h2 className="text-xl text-gray-600 mb-6">
+            <h2 className="text-xl text-gray-600 mb-8">
               Giải pháp cài đặt Windows 7, 10, 11 từ xa nhanh chóng và tiện lợi 
               ngay tại nhà bạn. Đội ngũ kỹ thuật viên giàu kinh nghiệm sẵn sàng hỗ trợ 24/7.
             </h2>
-
-            {/* Sticky Call to Action Button */}
-            <div className="sticky top-4 z-50 mb-8">
-              <Button 
-                size="lg" 
-                className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 text-lg font-bold shadow-2xl border-2 border-red-400 animate-pulse hover:animate-none transform hover:scale-105 transition-all duration-300"
-                onClick={() => window.open('tel:0854289499')}
-              >
-                <Phone className="w-6 h-6 mr-3" />
-                🔥 GỌI NGAY / CHAT ZALO: 0854289499
-              </Button>
-            </div>
 
             <div className="grid md:grid-cols-2 gap-4 mb-8">
               {features.map((feature, index) => (
